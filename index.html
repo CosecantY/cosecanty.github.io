@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>绩点计算器v1.0 -20200902 </title>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- 引入样式 -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+  />
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+  <body>
+    <div id="app">
+      <span class="title">绩点计算器v1.0</span>
+      <div class="form">
+        <el-form ref="form" :model="form" :rules="rules" label-width="110px">
+          <el-form-item label="外语1" prop="english_1">
+            <el-input
+              size="medium"
+              v-model="form.english_1"
+              placeholder="请输入外语1绩点"
+            />
+          </el-form-item>
+          <el-form-item label="外语2" prop="english_2">
+            <el-input
+              size="medium"
+              v-model="form.english_2"
+              placeholder="请输入外语2绩点"
+            />
+          </el-form-item>
+          <el-form-item label="高数1" prop="math_1">
+            <el-input
+              size="medium"
+              v-model="form.math_1"
+              placeholder="请输入高数1绩点"
+            />
+          </el-form-item>
+          <el-form-item label="高数2" prop="math_2">
+            <el-input
+              size="medium"
+              v-model="form.math_2"
+              placeholder="请输入高数2绩点"
+            />
+          </el-form-item>
+          <el-form-item label="C语言" prop="c">
+            <el-input
+              size="medium"
+              v-model="form.c"
+              placeholder="请输入C语言绩点"
+            />
+          </el-form-item>
+          <el-form-item label="数据库" prop="dataBase">
+            <el-input
+              size="medium"
+              v-model="form.dataBase"
+              placeholder="请输入数据库绩点"
+            />
+          </el-form-item>
+          <el-form-item label="计算机网络" prop="net">
+            <el-input
+              size="medium"
+              v-model="form.net"
+              placeholder="请输入计算机网络绩点"
+            />
+          </el-form-item>
+          <el-form-item label="操作系统" prop="os">
+            <el-input
+              size="medium"
+              v-model="form.os"
+              placeholder="请输入操作系统绩点"
+            />
+          </el-form-item>
+          <el-form-item label="数电" prop="digitalCircuit">
+            <el-input
+              size="medium"
+              v-model="form.digitalCircuit"
+              placeholder="请输入数电绩点"
+            />
+          </el-form-item>
+          <el-form-item label="数据结构" prop="dataStructure">
+            <el-input
+              size="medium"
+              v-model="form.dataStructure"
+              placeholder="请输入数据结构绩点"
+            />
+          </el-form-item>
+          <el-form-item label="计算机组成原理" prop="computer">
+            <el-input
+              size="medium"
+              v-model="form.computer"
+              placeholder="请输入计算机组成原理绩点"
+            />
+          </el-form-item>
+          <el-form-item label="Java" prop="java">
+            <el-input
+              size="medium"
+              v-model="form.java"
+              placeholder="请输入Java绩点"
+            />
+          </el-form-item>
+          <el-form-item label="Java Web" prop="javaWeb">
+            <el-input
+              size="medium"
+              v-model="form.javaWeb"
+              placeholder="请输入Java Web绩点"
+            />
+          </el-form-item>
+        </el-form>
+      </div>
+      <span class="desc">
+        本工具仅用于绩点计算或学习使用，计算结果具有参考性但不保证完全准确，因计算偏差而产生的问题作者概不负责。</span
+      >
+      <div class="btns">
+        <el-button type="primary" @click="start">计 算</el-button>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          form: {},
+          rules: {},
+          // 绩点常数
+          GPA: {
+            english_1: 3.5,
+            english_2: 3.5,
+            math_1: 3.5,
+            math_2: 3.5,
+            c: 3.0,
+            dataBase: 3.0,
+            net: 3.0,
+            os: 2.0,
+            digitalCircuit: 3.0,
+            dataStructure: 3.0,
+            computer: 3.0,
+            java: 3.5,
+            javaWeb: 3.5,
+          },
+        },
+        created() {
+          console.log("任何问题联系Q893140048！");
+        },
+        methods: {
+          start() {
+            let gpaScore = 0;
+            let gpaTotal = 0;
+            let GPAArr = [];
+
+            if (this.form.english_1) {
+              gpaScore += this.GPA.english_1 * this.form.english_1;
+              gpaTotal += this.GPA.english_1;
+            }
+            if (this.form.english_2) {
+              gpaScore += this.GPA.english_2 * this.form.english_2;
+              gpaTotal += this.GPA.english_2;
+            }
+            if (this.form.math_1) {
+              gpaScore += this.GPA.math_1 * this.form.math_1;
+              gpaTotal += this.GPA.math_1;
+            }
+            if (this.form.math_2) {
+              gpaScore += this.GPA.math_2 * this.form.math_2;
+              gpaTotal += this.GPA.math_2;
+            }
+            if (this.form.c) {
+              gpaScore += this.GPA.c * this.form.c;
+              gpaTotal += this.GPA.c;
+            }
+            if (this.form.dataBase) {
+              gpaScore += this.GPA.dataBase * this.form.dataBase;
+              gpaTotal += this.GPA.dataBase;
+            }
+            if (this.form.net) {
+              gpaScore += this.GPA.net * this.form.net;
+              gpaTotal += this.GPA.net;
+            }
+            if (this.form.os) {
+              gpaScore += this.GPA.os * this.form.os;
+              gpaTotal += this.GPA.os;
+            }
+            if (this.form.digitalCircuit) {
+              gpaScore += this.GPA.digitalCircuit * this.form.digitalCircuit;
+              gpaTotal += this.GPA.digitalCircuit;
+            }
+            if (this.form.dataStructure) {
+              gpaScore += this.GPA.dataStructure * this.form.dataStructure;
+              gpaTotal += this.GPA.dataStructure;
+            }
+            if (this.form.computer) {
+              gpaScore += this.GPA.computer * this.form.computer;
+              gpaTotal += this.GPA.computer;
+            }
+            if (this.form.java) {
+              gpaScore += this.GPA.java * this.form.java;
+              gpaTotal += this.GPA.java;
+            }
+            if (this.form.javaWeb) {
+              gpaScore += this.GPA.javaWeb * this.form.javaWeb;
+              gpaTotal += this.GPA.javaWeb;
+            }
+            if (isNaN(gpaScore / gpaTotal)) {
+              alert("请至少输入一门课程绩点后计算！");
+            } else {
+              alert("计算结果为：" + (gpaScore / gpaTotal).toFixed(2));
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+  <style>
+    .title {
+      margin: 20px 0;
+      display: block;
+      font-size: 40px;
+      color: #409eff;
+      font-weight: 800;
+      width: 100%;
+      transition: 1s;
+      text-shadow: 1px 1px 2px rgb(255, 148, 232);
+      text-align: center;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+        Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+        sans-serif;
+    }
+    .title:hover {
+      text-shadow: 1px 1px 2px rgb(255, 7, 7);
+    }
+    .desc {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .form {
+      width: 500px;
+      margin: 20px auto;
+    }
+    .btns {
+      margin: 20px 0;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</html>
