@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>绩点计算器v1.0 -20200902 </title>
+    <title>绩点计算器v1.1 -20221119 </title>
   </head>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- 引入样式 -->
@@ -15,7 +15,7 @@
 
   <body>
     <div id="app">
-      <span class="title">绩点计算器v1.0</span>
+      <span class="title">绩点计算器v1.1</span>
       <div class="form">
         <el-form ref="form" :model="form" :rules="rules" label-width="110px">
           <el-form-item label="外语1" prop="english_1">
@@ -109,6 +109,27 @@
               placeholder="请输入Java Web绩点"
             />
           </el-form-item>
+          <el-form-item label="业务逻辑" prop="yeWuLuoJi">
+            <el-input
+              size="medium"
+              v-model="form.yeWuLuoJi"
+              placeholder="请输入业务逻辑框架应用开发绩点"
+            />
+          </el-form-item>
+          <el-form-item label="编译原理" prop="bianYi">
+            <el-input
+              size="medium"
+              v-model="form.bianYi"
+              placeholder="请输入编译原理绩点"
+            />
+          </el-form-item>
+          <el-form-item label="基于框架实训" prop="kuangJiaShiXun">
+            <el-input
+              size="medium"
+              v-model="form.kuangJiaShiXun"
+              placeholder="请输入基于框架的系统开发实训绩点"
+            />
+          </el-form-item>
         </el-form>
       </div>
       <span class="desc">
@@ -140,6 +161,9 @@
             computer: 3.0,
             java: 3.5,
             javaWeb: 3.5,
+            yeWuLuoJi: 3.5,
+            bianYi:3.0,
+            kuangJiaShiXun:4.0
           },
         },
         created() {
@@ -202,6 +226,18 @@
             if (this.form.javaWeb) {
               gpaScore += this.GPA.javaWeb * this.form.javaWeb;
               gpaTotal += this.GPA.javaWeb;
+            }
+            if (this.form.yeWuLuoJi) {
+              gpaScore += this.GPA.yeWuLuoJi * this.form.yeWuLuoJi;
+              gpaTotal += this.GPA.yeWuLuoJi;
+            }
+            if (this.form.bianYi) {
+              gpaScore += this.GPA.bianYi * this.form.bianYi;
+              gpaTotal += this.GPA.bianYi;
+            }
+            if (this.form.kuangJiaShiXun) {
+              gpaScore += this.GPA.kuangJiaShiXun * this.form.kuangJiaShiXun;
+              gpaTotal += this.GPA.kuangJiaShiXun;
             }
             if (isNaN(gpaScore / gpaTotal)) {
               alert("请至少输入一门课程绩点后计算！");
