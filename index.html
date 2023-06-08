@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>绩点计算器v1.1 -20221119 </title>
+    <title>绩点计算器v1.2 -20230608 </title>
   </head>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- 引入样式 -->
@@ -15,7 +15,7 @@
 
   <body>
     <div id="app">
-      <span class="title">绩点计算器v1.1</span>
+      <span class="title">绩点计算器v1.2</span>
       <div class="form">
         <el-form ref="form" :model="form" :rules="rules" label-width="110px">
           <el-form-item label="外语1" prop="english_1">
@@ -130,6 +130,13 @@
               placeholder="请输入基于框架的系统开发实训绩点"
             />
           </el-form-item>
+          <el-form-item label="毕业设计" prop="biYeSheJi">
+            <el-input
+              size="medium"
+              v-model="form.biYeSheJi"
+              placeholder="请输入毕业设计绩点"
+            />
+          </el-form-item>
         </el-form>
       </div>
       <span class="desc">
@@ -163,7 +170,8 @@
             javaWeb: 3.5,
             yeWuLuoJi: 3.5,
             bianYi:3.0,
-            kuangJiaShiXun:4.0
+            kuangJiaShiXun:4.0,
+            biYeSheJi:12.0
           },
         },
         created() {
@@ -238,6 +246,10 @@
             if (this.form.kuangJiaShiXun) {
               gpaScore += this.GPA.kuangJiaShiXun * this.form.kuangJiaShiXun;
               gpaTotal += this.GPA.kuangJiaShiXun;
+            }
+            if (this.form.biYeSheJi) {
+              gpaScore += this.GPA.biYeSheJi * this.form.biYeSheJi;
+              gpaTotal += this.GPA.biYeSheJi;
             }
             if (isNaN(gpaScore / gpaTotal)) {
               alert("请至少输入一门课程绩点后计算！");
